@@ -1,0 +1,74 @@
+from random import randint
+from time import sleep
+
+# Lista de opções do jogo
+itens = ['Pedra', 'Papel', 'tesoura']
+# Gera um número aleatório para a escolha da máquina
+maquina = randint(0,  2)
+
+# Solicita o nome do jogador
+nome = input("Digite seu nome: ")
+print("Olá," + nome)
+
+while True:
+    # Exibe as opções para o jogador
+    print('''Suas opções:
+    [  0 ] PEDRA
+    [  1 ] PAPEL
+    [  2 ] TESOURA''')
+
+    # Recebe a escolha do jogador
+    voce = int(input('Digite a sua opção: '))
+    # Animação de espera antes de revelar as escolhas
+    print('JO')
+    sleep(1)
+    print('KEEEEEEEN')
+    sleep(1.5)
+    print('PO!')
+    sleep(0.5)
+
+    # Mostra as escolhas do jogador e da máquina
+    print('*' *  20)
+    print('A MAQUINA jogou {}'.format(itens[maquina]))
+    sleep(0.5)
+    print(nome + ' jogou {}'.format(itens[voce]))
+    sleep(0.5)
+    print('*' *  20)
+
+    # Compara as escolhas para determinar o vencedor
+    if maquina ==  0: # Maquina joga PEDRA
+        if voce ==  0:
+            print('EMPATE')
+        elif voce ==  1:
+            print(nome + ' VENCEU!')
+        elif voce ==  2:
+            print('MAQUINA VENCEU')
+        else:
+            print(nome +', JOGADA INVÁLIDA')
+
+    elif maquina ==  1: # Maquina joga PAPEL
+        if voce ==  0: # PEDRA
+            print('MAQUINA VENCEU')
+        elif voce ==  1: # PAPEL
+            print('EMPATE')
+        elif voce ==  2: # TESOURA
+            print(nome + ' VENCEU')
+        else:
+            print('JOGADA INVÁLIDA')
+
+    elif maquina ==  2: # Maquina joga TESOURA
+        if voce ==  0: # PEDRA
+            print(nome + ' VENCEU')
+        elif voce ==  1: # PAPEL
+            print(nome + ', MAQUINA VENCEU')
+        elif voce ==  2: # TESOURA
+            print('EMPATE')
+        else:
+            print('JOGADA INVÁLIDA')
+
+    # Solicita ao jogador se deseja continuar o jogo
+    jogar = input("Digite  1 se deseja continuar. Digite outra tecla se deseja sair")
+    if jogar == '1':
+        continue
+    else:
+        break
